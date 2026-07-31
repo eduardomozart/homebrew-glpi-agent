@@ -8,6 +8,7 @@ To add this tap and install the GLPI Agent, run:
 
 ```bash
 brew tap eduardomozart/glpi-agent
+brew trust eduardomozart/glpi-agent
 brew install --cask glpi-agent
 ```
 
