@@ -1,0 +1,26 @@
+name: Bump GLPI Agent Cask
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Check for updates daily
+  workflow_dispatch:
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
+      - name: Configure Git user
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Bump Cask
+        run: |
+          brew bump-cask-pr \
+            --tap=eduardomozart/glpi-agent \
+            glpi-agent
+        env:
+          HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
