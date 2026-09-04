@@ -12,16 +12,9 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-      - name: Setup Homebrew
-        uses: Homebrew/actions/setup-homebrew@master
-
-      - name: Configure Git user
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-
       - name: Bump Cask
-        run: |
-          brew bump-cask-pr eduardomozart/glpi-agent/glpi-agent
-        env:
-          HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: dawidd6/action-homebrew-bump-cask@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          cask: glpi-agent
+          tap: eduardomozart/glpi-agent
