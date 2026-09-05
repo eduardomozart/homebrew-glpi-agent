@@ -13,7 +13,7 @@ jobs:
       pull-requests: write
     steps:
       - name: Setup Homebrew
-        uses: Homebrew/actions/setup-homebrew@master
+        uses: Homebrew/actions/setup-homebrew@main
 
       - name: Configure Git user
         run: |
