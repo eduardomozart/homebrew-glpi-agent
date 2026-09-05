@@ -12,9 +12,22 @@ jobs:
       contents: write
       pull-requests: write
     steps:
+      - name: Setup Homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
+      - name: Configure Git user
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Fetch latest version
+        id: get_version
+        run: |
+          LATEST_VERSION=$(curl -sL https://api.github.com/repos/glpi-project/glpi-agent/releases/latest | jq -r .tag_name | sed 's/^v//')
+          echo "version=$LATEST_VERSION" >> $GITHUB_OUTPUT
+
       - name: Bump Cask
-        uses: dawidd6/action-homebrew-bump-cask@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          cask: glpi-agent
-          tap: eduardomozart/glpi-agent
+        run: |
+          brew bump-cask-pr --version=${{ steps.get_version.outputs.version }} eduardomozart/glpi-agent/glpi-agent
+        env:
+          HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
