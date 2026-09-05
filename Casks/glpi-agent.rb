@@ -20,7 +20,6 @@ cask "glpi-agent" do
     strategy :github_latest
   end
 
-  depends_on macos: :catalina
 
   uninstall pkgutil: [
               "com.teclib.glpi-agent",
