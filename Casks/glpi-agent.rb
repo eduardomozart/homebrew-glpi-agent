@@ -1,15 +1,15 @@
 cask "glpi-agent" do
-  version "1.18"
+  version "1.19"
 
   on_arm do
-    sha256 "5b3aca3df9c62ed1932bc1075d479e3c32cd45e5855a22f8722dbb0a3dff89e7"
+    sha256 "abb4606512aaa9baaf2495b9e556f0d8f4210b847e885d769fdd6b2eb5ef4df7"
 
     url "https://github.com/glpi-project/glpi-agent/releases/download/#{version}/GLPI-Agent-#{version}_arm64.pkg"
 
     pkg "GLPI-Agent-#{version}_arm64.pkg"
   end
   on_intel do
-    sha256 "d644884155dda0f1798732f05f348e22abc126f5e1d6101b695dc48b14a70ffe"
+    sha256 "f5d819e60e6c47ad0edecb3588534464635da84caa9c16e14652c5da73d06c1d"
 
     url "https://github.com/glpi-project/glpi-agent/releases/download/#{version}/GLPI-Agent-#{version}_x86_64.pkg"
 
