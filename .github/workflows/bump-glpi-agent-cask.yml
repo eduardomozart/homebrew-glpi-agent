@@ -28,6 +28,7 @@ jobs:
 
       - name: Bump Cask
         run: |
-          brew bump-cask-pr --no-fork --version=${{ steps.get_version.outputs.version }} eduardomozart/glpi-agent/glpi-agent
+          brew bump-cask-pr --write-only --commit --version=${{ steps.get_version.outputs.version }} eduardomozart/glpi-agent/glpi-agent || true
+          git push origin HEAD:main
         env:
           HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
