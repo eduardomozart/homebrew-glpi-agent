@@ -23,7 +23,7 @@ jobs:
       - name: Fetch latest version
         id: get_version
         run: |
-          LATEST_VERSION=$(curl -sL https://api.github.com/repos/glpi-project/glpi-agent/releases/latest | jq -r .tag_name | sed 's/^v//')
+          LATEST_VERSION=$(curl -sL -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/glpi-project/glpi-agent/releases/latest | jq -r .tag_name | sed 's/^v//')
           echo "version=$LATEST_VERSION" >> $GITHUB_OUTPUT
 
       - name: Bump Cask
