@@ -16,7 +16,7 @@ brew install --cask glpi-agent
 
 ### Nightly Build
 
-If you want to test the latest features and bug fixes from the `develop` branch, you can install the nightly build. Note that the nightly build conflicts with the stable release, so you can only have one installed at a time.
+If you want to test the latest features and bug fixes from the `develop` branch, you can install the [nightly build](https://nightly.glpi-project.org/glpi-agent/). Note that the nightly build conflicts with the stable release, so you can only have one installed at a time.
 
 ```bash
 brew tap eduardomozart/glpi-agent
