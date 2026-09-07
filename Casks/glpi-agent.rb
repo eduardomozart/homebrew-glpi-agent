@@ -25,6 +25,7 @@ cask "glpi-agent" do
     strategy :github_latest
   end
 
+  conflicts_with cask: "glpi-agent-nightly"
   depends_on :macos
 
   uninstall launchctl: [

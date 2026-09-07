@@ -29,6 +29,10 @@ jobs:
       - name: Bump Cask
         run: |
           brew bump-cask-pr --write-only --commit --version=${{ steps.get_version.outputs.version }} eduardomozart/glpi-agent/glpi-agent || true
+          
+          NIGHTLY_VERSION=$(curl -sL https://nightly.glpi-project.org/glpi-agent/ | grep -Eo 'GLPI-Agent-[0-9.]+-[a-z0-9]+_x86_64\.pkg' | head -n 1 | sed -E 's/GLPI-Agent-(.*)_x86_64\.pkg/\1/')
+          brew bump-cask-pr --write-only --commit --version=$NIGHTLY_VERSION eduardomozart/glpi-agent/glpi-agent-nightly || true
+          
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/eduardomozart/homebrew-glpi-agent.git HEAD:main
         env:
           HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
