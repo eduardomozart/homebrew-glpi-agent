@@ -1,15 +1,15 @@
 cask "glpi-agent-nightly" do
-  version "1.22-git337c1501"
+  version "1.22-git3c0d65d8"
 
   on_arm do
-    sha256 "51259b8940c2763e59ef598128ba7f13a794d577be1303536d04014812c106b2"
+    sha256 "18f39023d847b5c4d0e376d94de5a20da7ee88eef1d7caabc412014fc3153a98"
 
     url "https://nightly.glpi-project.org/glpi-agent/GLPI-Agent-#{version}_arm64.pkg"
 
     pkg "GLPI-Agent-#{version}_arm64.pkg"
   end
   on_intel do
-    sha256 "9828f56ccbbd513fcc02f3154df8767024625c15bcc56160143e9b60ab16776d"
+    sha256 "54d0029c4e62c35e0a4526aa4bd19ff7624fdddabaeb6bbf211237962685aaff"
 
     url "https://nightly.glpi-project.org/glpi-agent/GLPI-Agent-#{version}_x86_64.pkg"
 
